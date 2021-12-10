@@ -1,5 +1,6 @@
 // to compute area and perimeter
 #include <stdio.h>
+#include <math.h>
 // find perimeter
 double perimeter(double a, double b, double c)
 {
@@ -9,7 +10,7 @@ double perimeter(double a, double b, double c)
 double area(double a, double b, double c)
 {
     double s = 0.5 * (a + b + c);
-    return s * (s - a) * (s - b) * (s - c) * 0.5;
+    return sqrt ( s * (s - a) * (s - b) * (s - c) );
 }
 int main()
 {
