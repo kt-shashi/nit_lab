@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define NS 10
+#define NS 10001
 void sort_array(int array[], int size)
 {
     for (int step = 0; step < (size - 1); step++)
