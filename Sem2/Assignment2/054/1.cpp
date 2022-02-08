@@ -136,7 +136,7 @@ int main()
     {
         cout << "\n-----------------------------\n";
         cout << "Choose a option\n";
-        cout << "1- Print Array\n";
+        cout << "1- Print/Travers Array\n";
         cout << "2- Insert element\n";
         cout << "3- Delete element\n";
         cout << "4- Sort array\n";
