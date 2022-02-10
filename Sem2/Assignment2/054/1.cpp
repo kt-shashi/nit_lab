@@ -2,8 +2,9 @@
 // Traversing, insertion, deletion, sorting, searching and merging of two arrays. 
 #include <bits/stdc++.h>
 using namespace std;
-#define NS 10001
-void sort_array(int array[], int size)
+#define NS 1001
+
+void sort_array(int array[], int size) //bubble sort
 {
     for (int step = 0; step < (size - 1); step++)
     {
@@ -24,7 +25,7 @@ void sort_array(int array[], int size)
     cout << "\nSorted Array : \n";
 }
 
-void insert_element(int array[], int size)
+void insert_element(int array[], int &size) //Insertion of element
 {
     if (size >= NS)
         cout << "\nSpace not available!\n";
@@ -35,11 +36,12 @@ void insert_element(int array[], int size)
         cin >> insert;
         array[size] = insert;
         cout << "Element inserted successfully!\n";
+        size = size + 1;
     }
 }
 
-int search_element(int array[], int size)
-{
+int search_element(int array[], int size) //Search an element
+{ 
     int search;
     cout << "Enter element you wanna search : ";
     cin >> search;
@@ -55,8 +57,13 @@ int search_element(int array[], int size)
         cout << "Element Found at Position : " << flag + 1;
 }
 
-void delete_element(int array[], int size)
+void delete_element(int array[], int size) //Element deletion buy element value
 {
+    if(size<=0)
+   {
+       cout<<"\nArray is empty!\n";
+       return;
+   }
     int del_element;
     cout << "\nEneter the element to delete : ";
     cin >> del_element;
@@ -77,7 +84,7 @@ void delete_element(int array[], int size)
         cout << "Element deleted successfully!";
 }
 
-void merge_arrays(int array1[], int size1)
+void merge_arrays(int array1[], int size1) //Merging two arrays in sorted manner
 {
     int size2;
     cout << "Enter size of second array : ";
@@ -106,18 +113,18 @@ void merge_arrays(int array1[], int size1)
         array3[k++] = array2[j++];
 
     cout << "Mereged Array : \n";
-    for (int index = 0; index < size1 + size2; index++)
+    for (int index = 0; index < size1 + size2; index++) //Display merged array
         cout << array3[index] << " ";
 }
 
-int print_array(int array[], int size)
+int print_array(int array[], int size) //Print array
 {
     if (size == 0)
-        cout << "Array is empty!";
+        cout << "\nArray is empty!";
     else
     {
         cout << "\nArray : ";
-        for (int index = 0; index < size; index++)
+        for (int index = 0; index <size; index++)
             cout << array[index] << " ";
     }
 }
@@ -146,7 +153,7 @@ int main()
         cout << "6- Merge two arrays\n";
         cout << "0- Exit";
         cout << "\n-----------------------------\n";
-        cout << "Eneter your choice : ";
+        cout << "Enter your choice : ";
 
         cin >> choice;
 
@@ -159,7 +166,6 @@ int main()
 
         case (2):
             insert_element(array, size);
-            size = size + 1;
             break;
 
         case (3):
