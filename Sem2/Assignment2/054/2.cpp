@@ -2,7 +2,8 @@
 // corresponding indices of the 1D array, for both row major order and column major order.
 #include <bits/stdc++.h>
 using namespace std;
-#define N 100
+#define N 1000
+
 void print_row_major(int array[N][N], int no_row, int no_column)
 {
     cout << "\nRow major representation-\n";
@@ -13,6 +14,7 @@ void print_row_major(int array[N][N], int no_row, int no_column)
         cout << "\n";
     }
 }
+
 void print_column_major(int array[N][N], int no_row, int no_column)
 {
     cout << "\nColumn major representation-\n";
@@ -24,6 +26,7 @@ void print_column_major(int array[N][N], int no_row, int no_column)
         cout << "\n";
     }
 }
+
 void find_order(int array[N][N], int row, int column)
 {
     int find_row, find_column;
@@ -47,20 +50,23 @@ void find_order(int array[N][N], int row, int column)
         {
         case (1):
             cout << "Row Major order : " << (find_row - 1) * column + find_column << "\n";
-
             break;
+                
         case (2):
             cout << "Column Major order : " << (find_column - 1) * row + find_row << "\n";
             break;
+                
         case (0):
             cout << "Exiting program....\n";
             break;
+                
         default:
             cout << "This is not the correct choice! Try again.\n";
             break;
         }
     }
 }
+
 int main()
 {
     int r, c;
@@ -70,15 +76,20 @@ int main()
     cin >> c;
     int array[N][N];
     cout << "Enter Matrix elements : \n";
+    
     for (int row = 0; row < r; row++)
         for (int column = 0; column < c; column++)
             cin >> array[row][column];
+   
     cout << "-------------------------------";
+    
     print_row_major(array, r, c);
     cout << "-------------------------------";
+    
     print_column_major(array, r, c);
     cout << "-------------------------------";
+    
     find_order(array, r, c);
     cout << "-------------------------------";
-    return 0;
+  return 0;
 }
