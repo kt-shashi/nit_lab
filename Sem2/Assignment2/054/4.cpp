@@ -1,3 +1,4 @@
+// Write a menu driven program for all the operations of a stack including PUSH, POP and DISPLAY
 #include <bits/stdc++.h>
 using namespace std;
 #define N 1000
