@@ -46,18 +46,18 @@ void find_order(int array[N][N], int row, int column)
         switch (choice)
         {
         case (1):
-            cout << "Row Major order : " << (find_row - 1) * column  + find_column << "\n";
-        
+            cout << "Row Major order : " << (find_row - 1) * column + find_column << "\n";
+
             break;
         case (2):
-            cout << "Column Major order : " << (find_column - 1) * row + find_row <<"\n";
+            cout << "Column Major order : " << (find_column - 1) * row + find_row << "\n";
             break;
         case (0):
-            cout<<"Exiting program....\n";
+            cout << "Exiting program....\n";
             break;
         default:
-            cout<<"This is not the correct choice! Try again.\n";
-            break;   
+            cout << "This is not the correct choice! Try again.\n";
+            break;
         }
     }
 }
