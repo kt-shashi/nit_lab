@@ -2,7 +2,8 @@
 // matrix for triangular matrices (Lower and Upper triangular matrices).
 #include <bits/stdc++.h>
 using namespace std;
-#define N 100
+#define N 1000
+
 void print_MST(int MST[3][N], int count)
 {
     cout << "----------------------------------\n";
@@ -20,6 +21,7 @@ void print_MST(int MST[3][N], int count)
         cout << "\n";
     }
 }
+
 void count_MST(int matrix[][N], int show_MST[3][N], int row, int column, int count)
 {
     for (int row_index = 0, non_zero = 0; row_index < row; row_index++)
@@ -34,6 +36,7 @@ void count_MST(int matrix[][N], int show_MST[3][N], int row, int column, int cou
                 non_zero++;
             }
 }
+
 void enter_matrix()
 {
     int matrix[N][N];
@@ -57,9 +60,11 @@ void enter_matrix()
         }
 
     int show_MST[3][N];
+    
     count_MST(matrix, show_MST, row, column, floor(row * (row + 1) / 2));
     print_MST(show_MST, floor(row * (row + 1) / 2));
 }
+
 int main()
 {
     int choise = 1;
@@ -79,17 +84,20 @@ int main()
         case (1):
             enter_matrix();
             break;
+                
         case (2):
             enter_matrix();
             break;
+                
         case (0):
             cout << "Program Exiting.....";
             break;
+                
         default:
             cout << "This is not the correct choice!\n";
             break;
         }
     }
 
-    return 0;
+   return 0;
 }
