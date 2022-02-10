@@ -1,4 +1,4 @@
-// Write a program in C to read values in a matrix, display it and also display the
+// Q-2 : Write a program in C to read values in a matrix, display it and also display the
 // corresponding indices of the 1D array, for both row major order and column major order.
 #include <bits/stdc++.h>
 using namespace std;
