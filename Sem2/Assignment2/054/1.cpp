@@ -1,3 +1,5 @@
+// Write a menu driven program in C to implement all the operations for array, including 
+// Traversing, insertion, deletion, sorting, searching and merging of two arrays. 
 #include <bits/stdc++.h>
 using namespace std;
 #define NS 10001
