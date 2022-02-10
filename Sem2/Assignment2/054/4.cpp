@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define N 1000
+
 void empty()
 {
     cout << "\nNo element is here!\n";
 }
+
 void push_element(int array[], int size)
 {
     if (size == N - 1)
@@ -18,6 +20,7 @@ void push_element(int array[], int size)
         cout << "\nElement push successfully!\n";
     }
 }
+
 void pop_element(int array[], int size)
 {
     if (size == -1)
@@ -82,5 +85,5 @@ int main()
         }
     }
     
-    return 0;
+  return 0;
 }
