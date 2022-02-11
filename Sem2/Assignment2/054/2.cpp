@@ -2,24 +2,25 @@
 // corresponding indices of the 1D array, for both row major order and column major order.
 #include <bits/stdc++.h>
 using namespace std;
-#define N 1000
-
+#define N 100
 void print_row_major(int array[N][N], int no_row, int no_column)
-{
-    cout << "Row Major Order -\n";
+{  
+    cout << "\nRow major representation-\n";
 
     for (int row = 0; row < no_row; row++)
         for (int column = 0; column < no_column; column++)
-            cout << array[row][column] << " - " << row << " " << column << "\n";
+          cout<<row*no_row+column+1<<" - "<<array[row][column]<<"\n";
+           
 }
-
 void print_column_major(int array[N][N], int no_row, int no_column)
 {
-    cout << "Column Major Order -\n";
-
+    int  column_array[no_row*no_column],index=0;
+    cout << "\nColumn major representation-\n";
+    
     for (int column = 0; column < no_column; column++)
         for (int row = 0; row < no_row; row++)
-            cout << array[row][column] << " - " << column << " " << row << "\n";
+          cout<<column*no_column+row+1<<" - "<<array[row][column]<<"\n";
+
 }
 
 int main()
