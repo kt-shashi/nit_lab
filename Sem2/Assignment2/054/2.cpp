@@ -6,90 +6,72 @@ using namespace std;
 
 void print_row_major(int array[N][N], int no_row, int no_column)
 {
-    cout << "\nRow major representation-\n";
+    cout << "Row Major Order -\n";
+
     for (int row = 0; row < no_row; row++)
-    {
         for (int column = 0; column < no_column; column++)
-            cout << array[row][column] << " ";
-        cout << "\n";
-    }
+            cout << array[row][column] << " - " << row << " " << column << "\n";
 }
 
 void print_column_major(int array[N][N], int no_row, int no_column)
 {
-    cout << "\nColumn major representation-\n";
+    cout << "Column Major Order -\n";
 
     for (int column = 0; column < no_column; column++)
-    {
         for (int row = 0; row < no_row; row++)
-            cout << array[row][column] << " ";
-        cout << "\n";
-    }
+            cout << array[row][column] << " - " << column << " " << row << "\n";
 }
 
-void find_order(int array[N][N], int row, int column)
+int main()
 {
-    int find_row, find_column;
+    int no_row, no_col;
 
-    cout << "\nEnter the indexe for find order's : ";
-    cin >> find_row >> find_column;
+    cout << "Enter number of row : ";
+    cin >> no_row;
 
-    cout << "Element : " << array[find_row - 1][find_column - 1] << "\n";
+    cout << "Enter number of column : ";
+    cin >> no_col;
+
+    int array[no_row][N];
+    cout << "Enter Matrix elements : \n";
+
+    for (int row = 0; row < no_row; row++)
+        for (int column = 0; column < no_col; column++)
+            cin >> array[row][column];
+
     int choice = -1;
     while (choice)
     {
         cout << "-----------------------------\n";
         cout << "\tChoose one option\n";
-        cout << "1- Row Major order.\n";
-        cout << "2- Column Major order.\n";
+        cout << "1- Row Major Order.\n";
+        cout << "2- Column Major Order.\n";
         cout << "0- Exit\n";
         cout << "-----------------------------\n";
         cout << "Enter your choice : ";
+
         cin >> choice;
+        cout << "-----------------------------\n";
+
         switch (choice)
         {
         case (1):
-            cout << "Row Major order : " << (find_row - 1) * column + find_column << "\n";
+            print_row_major(array, no_row, no_col);
             break;
-                
+
         case (2):
-            cout << "Column Major order : " << (find_column - 1) * row + find_row << "\n";
+            print_column_major(array, no_row, no_col);
             break;
-                
+
         case (0):
-            cout << "Exiting program....\n";
+            cout << "Exiting program.....";
             break;
-                
+
         default:
             cout << "This is not the correct choice! Try again.\n";
             break;
         }
     }
-}
-
-int main()
-{
-    int r, c;
-    cout << "Enter number of row : ";
-    cin >> r;
-    cout << "Enter number of column : ";
-    cin >> c;
-    int array[N][N];
-    cout << "Enter Matrix elements : \n";
-    
-    for (int row = 0; row < r; row++)
-        for (int column = 0; column < c; column++)
-            cin >> array[row][column];
-   
-    cout << "-------------------------------";
-    
-    print_row_major(array, r, c);
-    cout << "-------------------------------";
-    
-    print_column_major(array, r, c);
-    cout << "-------------------------------";
-    
-    find_order(array, r, c);
-    cout << "-------------------------------";
-  return 0;
+    cout << "\nProgram ended!";
+    return 0;
 }
