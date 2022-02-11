@@ -22,7 +22,7 @@ void sort_array(int array[], int size) //bubble sort
         if (swapped == 0)
             break;
     }
-    cout << "\nSorted Array : \n";
+    cout << "Sorted ";
 }
 
 void insert_element(int array[], int &size) //Insertion of element
@@ -32,10 +32,10 @@ void insert_element(int array[], int &size) //Insertion of element
     else
     {
         int insert;
-        cout << "\nEnete the element : ";
+        cout << "Enete the element : ";
         cin >> insert;
         array[size] = insert;
-        cout << "Element inserted successfully!\n";
+        cout << "Element inserted successfully!";
         size = size + 1;
     }
 }
@@ -65,7 +65,7 @@ void delete_element(int array[], int size) //Element deletion buy element value
        return;
    }
     int del_element;
-    cout << "\nEneter the element to delete : ";
+    cout << "Eneter the element to delete : ";
     cin >> del_element;
 
     int f = 0;
@@ -123,7 +123,7 @@ int print_array(int array[], int size) //Print array
         cout << "\nArray is empty!";
     else
     {
-        cout << "\nArray : ";
+        cout << "Array : ";
         for (int index = 0; index <size; index++)
             cout << array[index] << " ";
     }
@@ -156,12 +156,11 @@ int main()
         cout << "Enter your choice : ";
 
         cin >> choice;
-
+        cout << "-----------------------------\n";
         switch (choice)
         {
         case (1):
             print_array(array, size);
-            cout << "\n";
             break;
 
         case (2):
@@ -185,7 +184,16 @@ int main()
         case (6):
             merge_arrays(array, size);
             break;
+    
+        case (0):
+            cout << "Exiting program.....";
+            break;
+
+        default:
+            cout << "This is not the correct choice! Try again.";
+            break;
         }
     }
+    cout << "\nProgram ended!";
     return 0;
 }
