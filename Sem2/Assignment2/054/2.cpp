@@ -37,6 +37,7 @@ int main()
 
     for (int row = 0; row < no_row; row++)
         for (int column = 0; column < no_col; column++)
+            
             cin >> array[row][column];
 
     int choice = -1;
