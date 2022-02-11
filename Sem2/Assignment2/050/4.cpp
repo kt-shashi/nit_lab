@@ -48,7 +48,6 @@ public:
         this->top = this->top + 1;
         a[top] = data;
         cout << "Element added successfully" << endl;
-        cout << "top: " << top << endl;
     }
 
     // Pop an element from the stack
