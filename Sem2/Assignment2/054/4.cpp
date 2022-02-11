@@ -5,20 +5,20 @@ using namespace std;
 
 void empty()
 {
-    cout << "\nNo element is here!\n";
+    cout << "No element is here!";
 }
 
 void push_element(int array[], int size)
 {
     if (size == N - 1)
-        cout << "\nStack is Full!\n";
+        cout << "Stack is Full!";
     else
     {
-        cout << "\nEnter the element : ";
+        cout << "Enter the element : ";
         int n;
         cin >> n;
         array[size + 1] = n;
-        cout << "\nElement push successfully!\n";
+        cout << "Element push successfully!";
     }
 }
 
@@ -28,9 +28,8 @@ void pop_element(int array[], int size)
         empty();
     else
     {
-        cout << "\n"
-             << array[size];
-        cout << " is pop successfully!\n";
+        cout << array[size];
+        cout << " is pop successfully!";
     }
 }
 void display_element(int array[], int size)
@@ -40,10 +39,9 @@ void display_element(int array[], int size)
 
     else
     {
-        cout << "\nElements : ";
+        cout << "Elements : ";
         for (int index = 0; index <= size; index++)
             cout << array[index] << " ";
-        cout << "\n";
     }
 }
 
@@ -79,12 +77,15 @@ int main()
         case (3):
             display_element(array, top);
             break;
+        
+        case (0):
+            cout << "Program Exiting !";
+            break;
 
         default:
-            cout << "\nThis is not the choice !\n";
+            cout << "This is not the choice !";
             break;
         }
     }
-    
   return 0;
 }

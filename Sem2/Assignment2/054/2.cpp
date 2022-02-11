@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define N 100
+
 void print_row_major(int array[N][N], int no_row, int no_column)
 {  
     cout << "\nRow major representation-\n";
@@ -10,17 +11,15 @@ void print_row_major(int array[N][N], int no_row, int no_column)
     for (int row = 0; row < no_row; row++)
         for (int column = 0; column < no_column; column++)
           cout<<row*no_row+column+1<<" - "<<array[row][column]<<"\n";
-           
 }
+
 void print_column_major(int array[N][N], int no_row, int no_column)
 {
-    int  column_array[no_row*no_column],index=0;
     cout << "\nColumn major representation-\n";
     
     for (int column = 0; column < no_column; column++)
         for (int row = 0; row < no_row; row++)
           cout<<column*no_column+row+1<<" - "<<array[row][column]<<"\n";
-
 }
 
 int main()
@@ -38,6 +37,7 @@ int main()
 
     for (int row = 0; row < no_row; row++)
         for (int column = 0; column < no_col; column++)
+            
             cin >> array[row][column];
 
     int choice = -1;
