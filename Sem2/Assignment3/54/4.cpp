@@ -1,78 +1,91 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define SIZE 5
+#define N 100
+
 void enQueue(int queue[], int &front, int &rear)
 {
-	if (rear == SIZE - 1)
-		printf("Queue is Full!");
-	
-	else{
-     	int value;
-     	printf("Enter the value to be insert: ");
-     	scanf("%d", &value);
-     	 if (front == -1)
-     	     front = 0;
-     	    rear++;
-     	    queue[rear] = value;
-     	 printf("Insert element successfully!");
-	}
+      if (rear == N - 1)
+            cout << "Queue is filled!";
+      else
+      {
+            int element;
+            if (front == -1)
+                  front = 0;
+            cout << "Inset the element in queue : ";
+            cin >> element;
+            rear = rear + 1;
+            queue[rear] = element;
+
+            cout << "Element added successfully!";
+      }
 }
+
 void deQueue(int queue[], int &front, int &rear)
 {
-	if (front == rear)
-	   printf("Queue is Empty!");
-	else{   
-		printf("Deleted : %d", queue[front]);
-		front++;
-		if (front == rear)
-			front = rear = -1;
-	}		
+      if (front == -1 || front > rear)
+      {
+            cout << "No element is here!";
+            return;
+      }
+      else
+      {
+            cout << queue[front] << " is deleted successfully!";
+            front = front + 1;
+      }
 }
+
 void display(int queue[], int &front, int &rear)
 {
-	if (rear == front && front==-1)
-		printf("Queue is Empty!");
-	else{   	
-		printf("Queue elements are: ");
-		for (int i = front; i <= rear; i++)
-			printf("%d ", queue[i]);
-	}		
+      if (front == -1 || front > rear)
+            cout << "Queue is empty!";
+      else
+      {
+            cout << "Queue : ";
+            for (int i = front; i <= rear; i++)
+                  cout << queue[i] << " ";
+      }
 }
+
 int main()
 {
-	int queue[SIZE], front = -1, rear = -1;
-	int value, choice = 1;
-	while (choice)
-	{
-		printf("\n-------------------------\n");
-		printf("\tChoose one option");
-		printf("\n1- Insertion"
-			   "\n2- Deletion"
-			   "\n3- Display"
-			   "\n0- Exit");
-		printf("\n-------------------------");
-		printf("\nEnter your choice: ");
-		scanf("%d", &choice);
-		switch (choice)
-		{
-		case 1:
-			enQueue(queue, front, rear);
-			break;
+      int queue[N], front = -1, rear = -1;
+      int choice = 1;
+      while (choice)
+      {
+            cout << "\n------------------------\n";
+            cout << "    Choice one option\n";
+            cout << " 1- ENQUEUE\n";
+            cout << " 2- DEQUEUE\n";
+            cout << " 3- DISPLAY\n";
+            cout << " 0- Exit\n";
+            cout << "------------------------\n";
+            cout << "Enter your choice : ";
+            cin >> choice;
+            switch (choice)
+            {
+			    
+            case (1):
+                  enQueue(queue, front, rear);
+                  break;
 
-		case 2:
-			deQueue(queue, front, rear);
-			break;
+            case (2):
+                  deQueue(queue, front, rear);
+                  break;
 
-		case 3:
-			display(queue, front, rear);
-			break;
+            case (3):
+                  display(queue, front, rear);
+                  break;
 
-		case 0:
-			printf("Program Exiting...");
-			break;
+            case (0):
+                  cout << "Program is exiting...!";
+                  break;
 
-		default:
-			printf("This is not the choice !Try again...");
-		}
-	}
+            default:
+                  cout << "This is not the choice. Try again!";
+                  break;
+			    
+            }
+      }
+   cout<<"\nProgram ended!";
+  return 0;
 }
