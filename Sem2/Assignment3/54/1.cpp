@@ -27,6 +27,6 @@ int main()
       for (int i = 0; i < str.length(); i++)
             pop(--top, stack, str);
 
-      cout << "Reverse string : " << str;
+      cout << "Reversed string : " << str;
   return 0;
 }
