@@ -86,6 +86,8 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[], char stack[], int &top
             if (item == '(')
                   push(item, stack, top);
 
+            if (item == ' ')
+            { }
             else if (isdigit(item) || isalpha(item))
             {
                   postfix_exp[j] = item;
