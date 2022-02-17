@@ -1,14 +1,18 @@
+// *✲*´*。.❄¯*✲。❄。*¨`*✲´*。❄¨`*✲。❄。*`*
+// *╔════════════ ༺❀༻❤༺❀༻ ════════════╗*
+// *♥*❄¯*❄✲❄♫♪♩░S░O░S░H░U░B░H░♪♫♪♫♪❄¯*✲❄
+// *╚════════════ ༺❀༻❤༺❀༻ ════════════╝*
+// *✲*´*。.❄¯*✲。❄。*¨`*✲´*。❄¨`*✲。❄。*`*
 #include <bits/stdc++.h>
 using namespace std;
 #define SIZE 100
-
 class infix
 {
 private:
   string expression;
   int numbers[SIZE];
   char operators[SIZE];
-  int   top_number = -1, top_operator = -1;
+  int top_number = -1, top_operator = -1;
 
 public:
   void enter_expression();
@@ -24,7 +28,7 @@ public:
 
 void infix::enter_expression()
 {
-  cout<<"Enter expresion : ";
+  cout << "Enter expresion : ";
   getline(cin, expression);
 }
 
@@ -62,10 +66,10 @@ int infix::operation(int numbers[SIZE], char op[SIZE])
 
   case '-':
     return b - a;
-  
+
   case '*':
     return a * b;
-  
+
   case '/':
     return b / a;
   }
@@ -81,10 +85,10 @@ int infix::precedence(char c)
 {
   if (c == '+' || c == '-')
     return 1;
- 
+
   if (c == '*' || c == '/')
     return 2;
- 
+
   if (c == '^')
     return 3;
 
@@ -133,7 +137,7 @@ int infix::calculate()
 
     else if (check_operator(c))
     {
-      while (top_operator != -1 &&precedence(c) <= precedence(operators[top_operator]))
+      while (top_operator != -1 && precedence(c) <= precedence(operators[top_operator]))
       {
         output = operation(numbers, operators);
         push_number(output);
@@ -144,7 +148,7 @@ int infix::calculate()
 
   while (top_operator != -1)
   {
-    output = operation(numbers,operators);
+    output = operation(numbers, operators);
     push_number(output);
   }
   return pop_number();
@@ -153,12 +157,12 @@ int infix::calculate()
 int main()
 {
   infix stack;
-  cout<<"------------------------------\n";
+  cout << "------------------------------\n";
   stack.enter_expression();
-  cout<<"------------------------------\n";
-  cout << "Value : "; 
-  cout<< stack.calculate();
-  cout<<"\n------------------------------";
+  cout << "------------------------------\n";
+  cout << "Value : ";
+  cout << stack.calculate();
+  cout << "\n------------------------------";
 
   return 0;
 }
