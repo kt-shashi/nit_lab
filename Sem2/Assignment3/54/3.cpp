@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define SIZE 100
+
 class infix
 {
 private:
@@ -94,6 +95,7 @@ int infix::calculate()
 {
   int i, num, output, r;
   char c;
+  
   for (i = 0; expression[i] != '\0'; i++)
   {
     c = expression[i];
