@@ -59,38 +59,15 @@ Node *insertNodeAtIndex(Node *head, int data, int i)
 {
 
     Node *newNode = new Node(data);
-
-    if (i == 0)
-    {
-        newNode->next = head;
-        head = newNode;
-    }
-    else
-    {
-        Node *ptr = head;
-        int count = 1;
-        while (count < i && ptr != NULL)
-        {
-            ptr = ptr->next;
-            count++;
-        }
-
-        if (ptr != NULL)
-        {
-            newNode->next = ptr->next;
-            ptr->next = newNode;
-        }
-        else
-            cout << "Out of range" << endl;
-    }
-
+    newNode->next = head;
+    head = newNode;
     return head;
 }
 
 void printList(Node *head)
 {
 
-    cout << "--Linked list--" << endl;
+    cout << "Linked list: " << endl;
     Node *ptr = head;
     while (ptr != NULL)
     {
@@ -110,7 +87,7 @@ int main()
     {
 
         cout << endl
-             << "--MENU for Linked List--" << endl;
+             << "MENU for Linked List: " << endl;
         cout << "1. Create List" << endl;
         cout << "2. Insert element at first index" << endl;
         cout << "3. Print list" << endl;
