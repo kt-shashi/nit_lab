@@ -4,7 +4,7 @@ using namespace std;
 class person
 {
 private:
-    char name[15];
+    char name[15] = "______________";
     double temperature;
 
 public:
@@ -15,9 +15,7 @@ public:
 
 void person::input(int i)
 {
-    cout << "Enert name of person No. " << i + 1 << " : ";
-    cin >> name;
-    cout << "Enter temperature :";
+    cout << "Enert temperature of person No. " << i + 1 << " (Farenheit) : ";
     cin >> temperature;
 }
 
@@ -28,29 +26,32 @@ double person::convert()
 
 void person::display()
 {
-    cout << "Name  : " << name;
+    cout << "\n"
+         << name;
     cout << fixed;
-    cout << "\nTemperature : " << setprecision(1) << convert() << " Centigrate\n";
+    cout << "     " << setprecision(1) << convert() << "\n";
 }
 
 int main()
 {
-
     cout << "-----------------------------\n";
-    
+
     int n;
     cout << "How many person are there : ";
     cin >> n;
-    
+
     person data[n];
-    
+
     cout << "-----------------------------\n";
     for (int i = 0; i < n; i++)
         data[i].input(i);
 
     cout << "-----------------------------\n";
+
+    cout << "   NAME"
+         << "\t\tTemperature(Centigrate)";
     for (int i = 0; i < n; i++)
         data[i].display();
-    
+    cout << "-----------------------------\n";
     return 0;
 }
