@@ -7,6 +7,7 @@
 #define MAXSIZE 10
 using namespace std;
 
+// Count duplicate values
 int countDuplicates(int *a, int &n)
 {
     int count = 0;
@@ -15,6 +16,8 @@ int countDuplicates(int *a, int &n)
         int flag = 0;
         for (int j = 0; j < n; j++)
         {
+            // Check if elemeent at ith index is present more than 1 time
+            // If yes, then increment count and remove all occurances of ith index element
             if (a[i] == a[j] && i != j && a[j] != INT_MIN)
             {
                 flag = 1;
@@ -31,6 +34,7 @@ int main()
 {
     int a[MAXSIZE], n;
 
+    // User input
     cout << "Enter number of elements : ";
     cin >> n;
     for (int i = 0; i < n; i++)
@@ -39,6 +43,7 @@ int main()
         cin >> a[i];
     }
 
+    // Output
     cout << "There are " << countDuplicates(a, n) << " numbers that have duplicate values" << endl;
 
     return 0;

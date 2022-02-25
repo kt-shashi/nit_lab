@@ -5,9 +5,10 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#define MAXSIZE 10
+#define MAXSIZE 7
 using namespace std;
 
+// Structure KYC
 struct KYC
 {
     string name;
@@ -23,6 +24,7 @@ struct KYC
 void input_data(struct KYC &kyc)
 {
 
+    // User input
     cout << "Complete your KYC" << endl
          << endl;
     cout << "Enter Name: " << endl;
@@ -78,8 +80,13 @@ int main()
     // Loop for user input
     for (int i = 0; i < n; i++)
     {
+        // input KYC details
         input_data(kyc[i]);
+        
+        // output KYC details
         output_data(kyc[i]);
+
+        // output Tax details
         cout << "You have to pay Rs. " << fixed << setprecision(2) << computeIncomeTax(kyc[i]) << " as tax." << endl
              << endl;
     }

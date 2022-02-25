@@ -4,11 +4,12 @@
 
 #include <iostream>
 #include <iomanip>
-#define MAXSIZE 2
+#define MAXSIZE 5
 #define SGST 9.0
 #define CGST 9.0
 using namespace std;
 
+// Structure product
 struct Product
 {
     int productId;
@@ -73,8 +74,11 @@ int main()
     // Loop for user input
     for (int i = 0; i < n; i++)
     {
+        // input products details
         input_detail(products[i]);
+        // output products details
         output_detail(products[i]);
+        // compute sales price of the product
         cout << "The sales price of a product is Rs." << fixed << setprecision(2) << computesalesprice(products[i]) << endl;
     }
 }
