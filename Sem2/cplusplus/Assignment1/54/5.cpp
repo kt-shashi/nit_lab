@@ -8,6 +8,8 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+
+// class of person store and function
 class person
 {
 private:
@@ -20,17 +22,20 @@ public:
     void display();
 };
 
+// input function
 void person::input(int i)
 {
     cout << "Enert temperature of person No. " << i + 1 << " (Farenheit) : ";
     cin >> temperature;
 }
 
+// convert temperature Farenheit to Centigrate 
 double person::convert()
 {
     return (temperature - 32) * 5 / 9;
 }
 
+// output funtion
 void person::display()
 {
     cout << "\n"
@@ -42,7 +47,6 @@ void person::display()
 int main()
 {
     cout << "-----------------------------\n";
-
     int n;
     cout << "How many person are there : ";
     cin >> n;
@@ -50,6 +54,7 @@ int main()
     person data[n];
 
     cout << "-----------------------------\n";
+    // input data
     for (int i = 0; i < n; i++)
         data[i].input(i);
 
@@ -57,8 +62,10 @@ int main()
 
     cout << "   NAME"
          << "\t    Temperature(Centigrate)";
+    // output
     for (int i = 0; i < n; i++)
         data[i].display();
     cout << "-----------------------------\n";
+    
     return 0;
 }
