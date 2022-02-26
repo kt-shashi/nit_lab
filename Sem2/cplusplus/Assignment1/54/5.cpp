@@ -1,10 +1,17 @@
+/**
+ * ASSIGNMENT – 1
+ * Q : 5
+ * Reg. No : 2021PGCACA054
+ * Name : Shubhanshu Singh
+ **/
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
 class person
 {
 private:
-    char name[15] = "______________";
+    string name;
     double temperature;
 
 public:
@@ -27,7 +34,7 @@ double person::convert()
 void person::display()
 {
     cout << "\n"
-         << name;
+         << name << setw(15) << setfill('_');
     cout << fixed;
     cout << "     " << setprecision(1) << convert() << "\n";
 }
@@ -49,7 +56,7 @@ int main()
     cout << "-----------------------------\n";
 
     cout << "   NAME"
-         << "\t\tTemperature(Centigrate)";
+         << "\t    Temperature(Centigrate)";
     for (int i = 0; i < n; i++)
         data[i].display();
     cout << "-----------------------------\n";
