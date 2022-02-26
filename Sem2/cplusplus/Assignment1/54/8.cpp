@@ -9,6 +9,8 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+
+// gama fucntion
 void check_gamma()
 {
     int x;
@@ -18,6 +20,8 @@ void check_gamma()
     // gamma() is called inline
     cout << "Gamma(x) : " << tgamma(x) << "\n";
 }
+
+// beta function
 void check_beta()
 {
     int x, y;
@@ -30,6 +34,7 @@ void check_beta()
     cout << "Beta(x,y) : " << beta(x, y) << "\n";
 }
 
+// psi fucntion
 void check_psi()
 {
     int x;
@@ -41,6 +46,7 @@ void check_psi()
          << "\n";
 }
 
+// choice cheking
 void check_choice(int choice)
 {
     switch (choice)
@@ -69,7 +75,7 @@ void check_choice(int choice)
 
 int main()
 {
-
+    // user choice
     int choice = 1;
     while (choice)
     {
@@ -82,6 +88,7 @@ int main()
         cout << "-----------------------\n";
         cout << "Enter your choice : ";
         cin >> choice;
+        // check which choice is input
         check_choice(choice);
     }
     return 0;
