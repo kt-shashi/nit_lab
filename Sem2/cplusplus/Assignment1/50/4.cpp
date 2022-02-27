@@ -10,7 +10,7 @@
 using namespace std;
 
 // Count duplicate values
-int countDuplicates(int *a, int &n)
+int countDuplicates(int(&a)[MAXSIZE], int &n)
 {
     int count = 0;
     for (int i = 0; i < n; i++)
