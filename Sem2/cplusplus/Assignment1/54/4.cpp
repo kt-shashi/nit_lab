@@ -1,9 +1,8 @@
-
 #include <iostream>
 using namespace std;
 #define N 100
 
-void input(int arr[], int &size)
+void input(int (&arr)[N], int &size)
 {
     cout << "Enter number of elements : ";
     cin >> size;
@@ -13,7 +12,7 @@ void input(int arr[], int &size)
         cin >> arr[index];
 }
 
-void count(int *arr, int &size)
+void count(int (&arr)[N], int &size)
 {
     int count = 0;
     for (int i = 0; i < size - 1; i++)
