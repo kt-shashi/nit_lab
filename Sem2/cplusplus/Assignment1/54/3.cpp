@@ -1,6 +1,14 @@
+/**
+ * ASSIGNMENT – 1
+ * Q : 3
+ * Reg. No : 2021PGCACA054
+ * Name : Shubhanshu Singh
+ **/
+
 #include <iostream>
 using namespace std;
 
+// check for multiplication
 void check(int &r1, int &c1, int &r2, int &c2)
 {
     while (c1 != r2)
@@ -62,7 +70,8 @@ int main()
                 res[i][j] += arr1[i][k] * arr2[k][j];
         }
     }
-
+    
+    // Output of multiplication
     cout << "multiplication : \n";
     for (int i = 0; i < r1; i++)
     {
