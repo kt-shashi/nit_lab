@@ -4,7 +4,9 @@
 
 #include <iostream>
 #include <climits>
+
 #define MAXSIZE 10
+
 using namespace std;
 
 // Count duplicate values

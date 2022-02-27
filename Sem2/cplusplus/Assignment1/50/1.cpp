@@ -5,7 +5,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+
 #define MAXSIZE 7
+
 using namespace std;
 
 // Structure KYC

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <iomanip>
+
 #define MAXSIZE 2
 
 using namespace std;

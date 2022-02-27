@@ -4,9 +4,11 @@
 
 #include <iostream>
 #include <iomanip>
+
 #define MAXSIZE 5
 #define SGST 9.0
 #define CGST 9.0
+
 using namespace std;
 
 // Structure product
@@ -55,14 +57,16 @@ void output_detail(struct Product &product)
 double computesalesprice(struct Product &product)
 {
 
-    double discount = product.productLabelPrice - ((product.currentDiscountPercentage / 100) * product.productLabelPrice);
+    // Find discount
+    double discount = (product.currentDiscountPercentage / 100) * product.productLabelPrice;
 
-    cout << endl
-         << "Disc: " << discount << endl;
-    cout << "sgst: " << (product.productLabelPrice * (SGST / 100)) << endl;
-    cout << "cgst: " << (product.productLabelPrice * (CGST / 100)) << endl;
+    // Subtract discont from Label Price
+    double discountedPrice = product.productLabelPrice - discount;
 
-    return (product.productLabelPrice - discount + (product.productLabelPrice * (SGST / 100)) + (product.productLabelPrice * (CGST / 100)));
+    // Add GST ( 9% SGST and 9% CGST )
+    double priceWithGST = discountedPrice + (product.productLabelPrice * (SGST / 100)) + (product.productLabelPrice * (CGST / 100));
+
+    return priceWithGST;
 }
 
 int main()
