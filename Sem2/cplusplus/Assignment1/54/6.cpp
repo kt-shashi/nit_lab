@@ -49,7 +49,7 @@ int main()
     cin >> pos;
 
     cout << "-------------------------\n";
-    Print_Pose(arr, n, pos);
+    Print_Pose(arr, n, pos-1);
     cout << "\n-------------------------";
 
     // Deallocating memory
