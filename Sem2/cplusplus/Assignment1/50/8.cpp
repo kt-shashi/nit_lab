@@ -29,10 +29,4 @@ int main()
 
     cout << "Result of Beta function for " << inputB1 << " and " << inputB2 << " is: " << beta(inputB1, inputB2) << "\n";
 
-    // // Psi function
-    // double inputPSI;
-    // cout << "Enter number to find value if it's Psi function: ";
-    // cin >> inputPSI;
-
-    // cout << "Psi function value for " << inputPSI << " is: " << psi(inputPSI) << endl;
 }
