@@ -1,4 +1,4 @@
-// Assignment 1 Program 1
+// Assignment 2 Program 1
 // Name: Shashi Kant
 // Roll: 2021PGCACA050
 
