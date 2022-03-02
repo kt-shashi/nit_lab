@@ -40,7 +40,7 @@ int main()
         cout << "Entry for Product " << i + 1 << endl;
         cout << "Enter product id: ";
         cin >> p[i].productId;
-        cout << "Enter product rating: ";
+        cout << "Enter product rating: (Between 1-5) ";
         cin >> p[i].rating;
     }
 
