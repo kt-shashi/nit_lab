@@ -58,7 +58,7 @@ int main()
     cin >> rho;
     cout << "Enter volume: ";
     cin >> volume;
-    cout << "Result: " << buoyantForce(rho, volume) << endl;
+    cout << "Force = " << buoyantForce(rho, volume) << " newton" << endl;
 
     // Part 3
     double acceleration, i, time;
@@ -69,7 +69,7 @@ int main()
     cin >> i;
     cout << "Enter time: ";
     cin >> time;
-    cout << "Result: " << findFinalDisplacement(acceleration, i, time) << endl;
+    cout << "Displacement = " << findFinalDisplacement(acceleration, i, time) << " units" << endl;
 
     // Part 4
     int a, b;
