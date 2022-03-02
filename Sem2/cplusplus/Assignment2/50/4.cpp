@@ -37,8 +37,6 @@ bool isElementPresent(int a[], int size, int x)
 // Print an array
 void printArray(int a[], int size)
 {
-    //     // Display merged array
-    //     cout << "Merged array" << endl;
     for (int i = 0; i < size; i++)
         cout << a[i] << " ";
     cout << endl;
@@ -142,5 +140,4 @@ int main()
         cout << "Invalid input.";
         break;
     }
-
 }
