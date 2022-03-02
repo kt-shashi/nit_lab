@@ -4,7 +4,7 @@
 
 #include <iostream>
 #define R 8.31446261815324
-#define G 9.2
+#define G 9.8
 
 using namespace std;
 
@@ -18,6 +18,12 @@ inline bool isIdealGasLaw(double p, double v, double n, double r, double t)
 inline double buoyantForce(double rho, double volume)
 {
     return rho * volume * G;
+}
+
+// Part 3. Final displacement
+inline double findFinalDisplacement(double a, double i, double t)
+{
+    return ((i * t) + (a * t * t) / 2);
 }
 
 // Part 4. To compute a XOR b
@@ -44,6 +50,26 @@ int main()
         cout << "Yes ideal gas law" << endl;
     else
         cout << "Not ideal gas law" << endl;
+
+    // Part 2
+    int rho, volume;
+    cout << "2. Buoyant Force" << endl;
+    cout << "Enter density: ";
+    cin >> rho;
+    cout << "Enter volume: ";
+    cin >> volume;
+    cout << "Result: " << buoyantForce(rho, volume) << endl;
+
+    // Part 3
+    double acceleration, i, time;
+    cout << "3. Final displacement" << endl;
+    cout << "Enter Accelaration: ";
+    cin >> acceleration;
+    cout << "Enter initial valocity: ";
+    cin >> i;
+    cout << "Enter time: ";
+    cin >> time;
+    cout << "Result: " << findFinalDisplacement(acceleration, i, time) << endl;
 
     // Part 4
     int a, b;
