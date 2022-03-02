@@ -4,6 +4,7 @@
 
 #include <iostream>
 #define R 8.31446261815324
+#define G 9.2
 
 using namespace std;
 
@@ -11,6 +12,12 @@ using namespace std;
 inline bool isIdealGasLaw(double p, double v, double n, double r, double t)
 {
     return (p * v) == (n * r * t);
+}
+
+// Part 2. To compute buoyant force
+inline double buoyantForce(double rho, double volume)
+{
+    return rho * volume * G;
 }
 
 // Part 4. To compute a XOR b
