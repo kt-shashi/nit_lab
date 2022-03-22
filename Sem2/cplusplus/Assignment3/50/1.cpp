@@ -1,4 +1,9 @@
+// Assignment 3 Program 1
+// Name: Shashi Kant
+// Roll: 2021PGCACA050
+
 #include <iostream>
+#include <algorithm>
 #include <math.h>
 
 using namespace std;
@@ -79,6 +84,16 @@ public:
     // 8. Coprime
     int nextCoprime()
     {
+
+        int i = 2;
+        int gcD = __gcd(i, num);
+        while (gcD != 1)
+        {
+            i++;
+            gcD = __gcd(i, num);
+        }
+
+        return i;
     }
 
     // 9. Reverse
@@ -115,7 +130,7 @@ int main()
         cout << "2. Change number" << endl;
         cout << "3. Check if number is Armstrong" << endl;
         cout << "4. Check if number is Prime" << endl;
-        cout << "5. Check if number is CoPrime" << endl;
+        cout << "5. Find CoPrime" << endl;
         cout << "6. Reverse the number" << endl;
         cout << "7. Exit" << endl
              << endl;
