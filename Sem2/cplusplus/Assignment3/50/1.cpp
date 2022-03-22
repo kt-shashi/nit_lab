@@ -18,7 +18,7 @@ public:
     // 2. Parameterized constructor
     Number(int num)
     {
-        this - num = num;
+        this->num = num;
     }
 
     // 3. Destructor
@@ -30,7 +30,7 @@ public:
     // 4. Accessor
     int getNumber()
     {
-        return n;
+        return num;
     }
 
     // 5. Mutator
@@ -70,7 +70,7 @@ public:
     {
         if (num <= 1)
             return false;
-        for (int i = 2; i * i <= n; i++)
+        for (int i = 2; i * i <= num; i++)
             if (num * i == 0)
                 return false;
         return true;
@@ -94,6 +94,84 @@ public:
             n /= 10;
         }
 
-        return n;
+        return rev;
+    }
+};
+
+int main()
+{
+
+    int input;
+    cout << "Enter a number: ";
+    cin >> input;
+
+    Number n1(input);
+
+    int flag = 1;
+    while (flag)
+    {
+
+        cout << "1. Get number" << endl;
+        cout << "2. Change number" << endl;
+        cout << "3. Check if number is Armstrong" << endl;
+        cout << "4. Check if number is Prime" << endl;
+        cout << "5. Check if number is CoPrime" << endl;
+        cout << "6. Reverse the number" << endl;
+        cout << "7. Exit" << endl
+             << endl;
+        cout << "Enter choice: ";
+        cin >> input;
+
+        switch (input)
+        {
+
+        case 1:
+
+            cout << "Number: " << n1.getNumber() << endl;
+            break;
+
+        case 2:
+
+            cout << "Enter new number: ";
+            cin >> input;
+            n1.changeNumber(input);
+            break;
+
+        case 3:
+
+            if (n1.isArmstrong())
+                cout << "Number is Armstrong " << endl;
+            else
+                cout << "Number is Not Armstrong " << endl;
+            break;
+
+        case 4:
+
+            if (n1.isPrime())
+                cout << "Number is Prime " << endl;
+            else
+                cout << "Number is Not Prime " << endl;
+            break;
+
+        case 5:
+
+            cout << "Next coprime is: " << n1.nextCoprime() << endl;
+            break;
+
+        case 6:
+
+            cout << "Reverse: " << n1.reverse() << endl;
+            break;
+
+        case 7:
+
+            flag = 0;
+            break;
+
+        default:
+
+            cout << "Invalid input" << endl;
+            break;
+        }
     }
 }
