@@ -2,7 +2,8 @@
 // Name: Shashi Kant
 // Roll: 2021PGCACA050
 
-#include <iostream>
+#include <bits/stdc++.h>
+// #include <math.h>
 
 using namespace std;
 
@@ -49,16 +50,35 @@ public:
     // 6. Inside circle
     bool insideCircle(int r, Point2D cen)
     {
+
+        int d1 = pow((xCo - cen.xCo), 2);
+        int d2 = pow((yCo - cen.yCo), 2);
+
+        int root = sqrt((d1 + d2));
+        if (root < r)
+            return true;
+        return false;
     }
 
     // 7. Check colinear
-    bool checkCollinear(Point2D, Point2D)
+    bool checkCollinear(Point2D p1, Point2D p2)
     {
+
+        double x1 = (double)(yCo - p1.yCo) / (xCo - p1.xCo);
+        double x2 = (double)(yCo - p2.yCo) / (xCo - p2.xCo);
+        double x3 = (double)(p1.yCo - p2.yCo) / (p1.xCo - p2.xCo);
+
+        if (x1 == x2 && x2 == x3)
+            return 1;
+        return 0;
     }
 
     // 8. Check Axis
     bool onAxis()
     {
+        if (xCo == 0 || yCo == 0)
+            return 1;
+        return 0;
     }
 };
 
@@ -71,9 +91,9 @@ int main()
     cout << "Enter y coordinate: ";
     cin >> y;
 
-    Point2D p1(x, y);
+    Point2D p1(x, y), p2, p3, p4;
 
-    int flag = 1, input;
+    int flag = 1, input, r;
     while (flag)
     {
 
@@ -108,13 +128,49 @@ int main()
 
         case 3:
 
+            cout << "Enter x coordinate: ";
+            cin >> x;
+            cout << "Enter y coordinate: ";
+            cin >> y;
+            p2.setPoint(x, y);
+
+            cout << "Enter radius: ";
+            cin >> r;
+
+            if (p1.insideCircle(r, p2))
+                cout << "Point is Inside circle" << endl;
+            else
+                cout << "Point is outside circle" << endl;
+
             break;
 
         case 4:
 
+            cout << "Enter x coordinate for 1st point: ";
+            cin >> x;
+            cout << "Enter y coordinate for 1st point: ";
+            cin >> y;
+            p3.setPoint(x, y);
+
+            cout << "Enter x coordinate for 2nd point: ";
+            cin >> x;
+            cout << "Enter y coordinate for 2nd point: ";
+            cin >> y;
+            p4.setPoint(x, y);
+
+            if (p1.checkCollinear(p3, p4))
+                cout << "Points are colliner" << endl;
+            else
+                cout << "Points are not colliner" << endl;
+
             break;
 
         case 5:
+
+            if (p1.onAxis())
+                cout << "Point is on Axis" << endl;
+            else
+                cout << "Point is not on Axis" << endl;
 
             break;
 

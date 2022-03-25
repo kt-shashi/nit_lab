@@ -78,6 +78,17 @@ public:
     // 6. Calculate time difference
     void calcTimeDifference(Time t1, Time t2)
     {
+
+        int second1 = (t1.hour * 3600) + (t1.minute * 60) + t1.second;
+        int second2 = (t2.hour * 3600) + (t2.minute * 60) + t2.second;
+
+        int result = abs(second1 - second2);
+
+        this->hour = result / 3600;
+        result = result % 3600;
+        this->minute = result / 60;
+        result = result % 60;
+        this->second = result;
     }
 
     // 7. Reset time
