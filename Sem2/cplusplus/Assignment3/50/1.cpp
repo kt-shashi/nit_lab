@@ -76,7 +76,7 @@ public:
         if (num <= 1)
             return false;
         for (int i = 2; i * i <= num; i++)
-            if (num * i == 0)
+            if (num % i == 0)
                 return false;
         return true;
     }
@@ -84,16 +84,7 @@ public:
     // 8. Coprime
     int nextCoprime()
     {
-
-        int i = 2;
-        int gcD = __gcd(i, num);
-        while (gcD != 1)
-        {
-            i++;
-            gcD = __gcd(i, num);
-        }
-
-        return i;
+        return num + 1;
     }
 
     // 9. Reverse
