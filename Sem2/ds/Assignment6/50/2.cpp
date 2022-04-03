@@ -1,3 +1,7 @@
+// Assignment 6
+// Question 2
+// Roll: 2021PGCACA050
+
 #include<iostream>
 
 using namespace std;
