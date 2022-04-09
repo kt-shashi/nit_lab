@@ -4,200 +4,220 @@
 
 using namespace std;
 
-int binarySearch(int a[], int n, int x){
+int binarySearch(int a[], int n, int x)
+{
 
-    int l=0,h=n-1;
+    int l = 0, h = n - 1;
 
-    while(l<=h){
-        int mid=(l+h)/2;
-        if(a[mid]>x){
-            h=mid-1;
+    while (l <= h)
+    {
+        int mid = (l + h) / 2;
+        if (a[mid] > x)
+        {
+            h = mid - 1;
         }
-        else if(a[mid]<x){
-            l=mid+1;
+        else if (a[mid] < x)
+        {
+            l = mid + 1;
         }
-        else{
+        else
+        {
             return mid;
         }
     }
 
     return INT_MIN;
-
 }
 
-void bubbleSort(int a[], int n){
+int binarySearchRecursive(int a[], int l, int r, int x)
+{
 
-    for(int i=0;i<n-1;i++){
+    if (l > r)
+        return 0;
 
-        for(int j=0;j<n-1;j++){
+    int mid = (l + r) / 2;
+    if (a[mid] > x)
+        return binarySearchRecursive(a, l, mid - 1, x);
+    else if (a[mid] < x)
+        return binarySearchRecursive(a, mid + 1, r, x);
+    else
+        return 1;
+}
 
-            if(a[j]>a[j+1])
+void bubbleSort(int a[], int n)
+{
+
+    for (int i = 0; i < n - 1; i++)
+    {
+
+        for (int j = 0; j < n - 1; j++)
+        {
+
+            if (a[j] > a[j + 1])
             {
 
-                int temp=a[j];
-                a[j]=a[j+1];
-                a[j+1]=temp;
-
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
             }
-
         }
-
     }
-
 }
 
-void insertionSort(int a[], int n){
+void insertionSort(int a[], int n)
+{
 
+    for (int i = 1; i < n; i++)
+    {
 
-    for(int i=1;i<n;i++){
+        int min = a[i];
 
-        int min=a[i];
-
-        while(i!=0 && a[i-1]>min ){
-            a[i]=a[i-1];
+        while (i != 0 && a[i - 1] > min)
+        {
+            a[i] = a[i - 1];
             i--;
         }
 
-        a[i]=min;
-
+        a[i] = min;
     }
-
 }
 
-void selectionSort(int a[], int n){
+void selectionSort(int a[], int n)
+{
 
-    for(int i=0;i<n-1;i++){
+    for (int i = 0; i < n - 1; i++)
+    {
 
-        int minIndex=i;
+        int minIndex = i;
 
-        for(int j=i+1;j<n;j++){
+        for (int j = i + 1; j < n; j++)
+        {
 
-            if(a[j]<a[minIndex])
+            if (a[j] < a[minIndex])
             {
 
-                minIndex=j;
-
+                minIndex = j;
             }
-
         }
 
-        int temp=a[i];
-        a[i]=a[minIndex];
-        a[minIndex]=temp;
-
+        int temp = a[i];
+        a[i] = a[minIndex];
+        a[minIndex] = temp;
     }
-
 }
 
-void display(int a[], int n){
+void display(int a[], int n)
+{
 
-    cout<<"Display array"<<endl;
-    for(int i=0;i<n;i++)
-        cout<<a[i]<<" ";
-    cout<<endl;
-
+    cout << "Display array" << endl;
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
+    cout << endl;
 }
 
-int main(){
+int main()
+{
 
     int a[size];
-    int loop=1;
+    int loop = 1;
 
-    while(loop){
+    while (loop)
+    {
 
-        cout<<"1. Binary search "<<endl;
-        cout<<"2. Bubble sort"<<endl;
-        cout<<"3. Insertion sort"<<endl;
-        cout<<"4. Selection sort"<<endl;
-        cout<<"5. Exit"<<endl;
-        cout<<"Enter choice: ";
+        cout << "1. Binary search " << endl;
+        cout << "2. Bubble sort" << endl;
+        cout << "3. Insertion sort" << endl;
+        cout << "4. Selection sort" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter choice: ";
 
         int ch;
-        cin>>ch;
-        int n,x,i;
+        cin >> ch;
+        int n, x, i;
 
-        switch(ch){
+        switch (ch)
+        {
 
-            case 1:
+        case 1:
 
-                cout<<"Enter size of array: ";
-                cin>>n;
+            cout << "Enter size of array: ";
+            cin >> n;
 
-                for(i=0;i<n;i++){
-                    cout<<"Enter element "<<i+1<<" : ";
-                    cin>>a[i];
-                }
+            for (i = 0; i < n; i++)
+            {
+                cout << "Enter element " << i + 1 << " : ";
+                cin >> a[i];
+            }
 
-                bubbleSort(a,n);
-                display(a,n);
+            bubbleSort(a, n);
+            display(a, n);
 
-                cout<<"Enter key to find: ";
-                cin>>x;
+            cout << "Enter key to find: ";
+            cin >> x;
 
+            i = binarySearchRecursive(a, 0, n, x);
+            if (!i)
+                cout << "Element not found." << endl;
+            else
+                cout << "Element found at index " << i << endl;
 
+            break;
 
-                i=binarySearch(a,n,x);
-                if(i==INT_MIN)
-                    cout<<"Element not found."<<endl;
-                else
-                    cout<<"Element found at index "<<i<<endl;
+        case 2:
+            cout << "Enter size of array: ";
+            cin >> n;
 
-                break;
+            for (i = 0; i < n; i++)
+            {
+                cout << "Enter element " << i + 1 << " : ";
+                cin >> a[i];
+            }
 
-            case 2:
-                cout<<"Enter size of array: ";
-                cin>>n;
+            bubbleSort(a, n);
 
-                for(i=0;i<n;i++){
-                    cout<<"Enter element "<<i+1<<" : ";
-                    cin>>a[i];
-                }
+            display(a, n);
 
-                bubbleSort(a,n);
+            break;
 
-                display(a,n);
+        case 3:
+            cout << "Enter size of array: ";
+            cin >> n;
 
-                break;
+            for (i = 0; i < n; i++)
+            {
+                cout << "Enter element " << i + 1 << " : ";
+                cin >> a[i];
+            }
 
-            case 3:
-                cout<<"Enter size of array: ";
-                cin>>n;
+            insertionSort(a, n);
 
-                for(i=0;i<n;i++){
-                    cout<<"Enter element "<<i+1<<" : ";
-                    cin>>a[i];
-                }
+            display(a, n);
 
-                insertionSort(a,n);
+            break;
 
-                display(a,n);
+        case 4:
+            cout << "Enter size of array: ";
+            cin >> n;
 
-                break;
+            for (i = 0; i < n; i++)
+            {
+                cout << "Enter element " << i + 1 << " : ";
+                cin >> a[i];
+            }
 
-            case 4:
-                cout<<"Enter size of array: ";
-                cin>>n;
+            selectionSort(a, n);
 
-                for(i=0;i<n;i++){
-                    cout<<"Enter element "<<i+1<<" : ";
-                    cin>>a[i];
-                }
+            display(a, n);
 
-                selectionSort(a,n);
+            break;
 
-                display(a,n);
+        case 5:
+            loop = 0;
+            break;
 
-                break;
-
-            case 5:
-                loop=0;
-                break;
-
-            default:
-                cout<<"Invalid input"<<endl;
-                break;
+        default:
+            cout << "Invalid input" << endl;
+            break;
         }
-
     }
-
 }

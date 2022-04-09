@@ -1,127 +1,159 @@
-// Assignment 4
+// Assignment 5
 // Question 1
-// Roll: 2021PGCACA050
+// 2021pgcaca050
 
 #include <iostream>
-#include <climits>
+#include <algorithm>
 
 using namespace std;
 
-class IntStack
+class Fraction
 {
-
 private:
-    int top;
-    int *p;
+    int num;
+    int denom;
 
 public:
-    // 1. Default constructor
-    IntStack()
+    Fraction()
     {
-        p = new int[10];
-        top = -1;
+        num = 0, denom = 1;
     }
 
-    // 2. Parameterized constructor
-    IntStack(int size)
+    Fraction(int num, int denom)
     {
-        p = new int[size];
-        top = -1;
+        this->num = num;
+        this->denom = denom;
     }
 
-    // 3. copy constructor
-    IntStack(const IntStack &obj)
+    void getFraction()
     {
-        int size = obj.top + 1;
-        p = new int[size];
-
-        for (int i = 0; i < size; i++)
-            p[i] = obj.p[i];
-
-        top = size - 1;
+        cout << num << "/" << denom << endl;
     }
 
-    // Returns true if Stack is empty
-    // Helper function
-    bool isEmpty()
+    void setFraction(int num, int denom)
     {
-        return (top == -1);
+        this->num = num;
+        this->denom = denom;
     }
 
-    // 4. Pop function
-    int pop()
-    {
-        if (isEmpty())
-            return INT_MIN;
-        return p[top--];
+    // Overloading
+
+    Fraction operator+(Fraction f1){
+
+        Fraction f3;
+
+        int lcm = (this->denom * f1.denom) / (__gcd(this->denom, f1.denom));
+        f3.denom = lcm;
+        f3.num = (this->num * (lcm / this->denom)) + (f1.num * (lcm / f1.denom));
+
+        int gcD = __gcd(f3.num, f3.denom);
+        f3.num = f3.num / gcD;
+        f3.denom = f3.denom / gcD;
+
+        return f3;
     }
 
-    // 5. Push function
-    void push(int val)
-    {
+    Fraction operator-(Fraction f1){
 
-        ++top;
-        p[top] = val;
+        Fraction f3;
+
+        int lcm = (this->denom * f1.denom) / (__gcd(this->denom, f1.denom));
+        f3.denom = lcm;
+        f3.num = (this->num * (lcm / this->denom)) - (f1.num * (lcm / f1.denom));
+
+        int gcD = __gcd(f3.num, f3.denom);
+        f3.num = f3.num / gcD;
+        f3.denom = f3.denom / gcD;
+
+        return f3;
     }
 
-    void display()
-    {
-        if (isEmpty())
-        {
-            cout << "Stack underflow" << endl;
-            return;
-        }
-        for (int i = 0; i <= top; i++)
-            cout << p[i] << " ";
-        cout << endl;
+    Fraction operator*(Fraction f2){
+
+        Fraction f3;
+
+        f3.num = this->num * f2.num;
+        f3.denom = this->denom * f2.denom;
+
+        int gcD = __gcd(f3.num, f3.denom);
+        f3.num = f3.num / gcD;
+        f3.denom = f3.denom / gcD;
+
+        return f3;
     }
+
+    friend Fraction operator/(Fraction f1, Fraction f2);
+    friend void operator << (ostream &out, Fraction &f);
+    friend void operator >> (istream &in, Fraction &f);
+
 };
 
-int main()
-{
+Fraction operator/(Fraction f1, Fraction f2){
 
-    IntStack s1;
-    IntStack s2(15);
+    Fraction f3;
 
-    int n = 1;
-    while (n)
-    {
+    f3.num = f1.num * f2.denom;
+    f3.denom = f1.denom * f2.num;
 
-        int ch, input, poppedValue;
-        cout << "1. Push" << endl;
-        cout << "2. Pop" << endl;
-        cout << "3. Display" << endl;
-        cout << "4. Exit" << endl;
-        cout << "Enter choice: ";
-        cin >> ch;
+    int gcD = __gcd(f3.num, f3.denom);
+    f3.num = f3.num / gcD;
+    f3.denom = f3.denom / gcD;
 
-        switch (ch)
-        {
+    return f3;
+}
 
-        case 1:
-            cout << "Enter data: ";
-            cin >> input;
-            s1.push(input);
-            break;
-        case 2:
-            poppedValue = s1.pop();
-            if (poppedValue == INT_MIN)
-                cout << "Stack underflow" << endl;
-            else
-                cout << "Popped item: " << poppedValue << endl;
-            break;
-        case 3:
-            s1.display();
-            break;
-        case 4:
-            n = 0;
-            break;
-        default:
-            cout << "Invalid input" << endl;
-            break;
-        }
-    }
+void operator << (ostream &out, Fraction &f){
 
-    IntStack s3(s1);
-    s3.display();
+    out<<f.num<<"/"<<f.denom<<endl;
+
+}
+
+void operator >> (istream &in, Fraction &f){
+
+    cout<<"Enter numerator: ";
+    in>>f.num;
+
+    cout<<"Enter denominator: ";
+    in>>f.denom;
+
+}
+
+int main(){
+
+    int n1,d1,n2,d2;
+    cout<<"Enter numerator for 1st fraction: ";
+    cin>>n1;
+    cout<<"Enter denominator for 1st fraction: ";
+    cin>>d1;
+
+    cout<<"Enter numerator for 2nd fraction: ";
+    cin>>n2;
+    cout<<"Enter denominator for 2nd fraction: ";
+    cin>>d2;
+
+    Fraction f1(n1,d1),f2(n2,d2);
+    Fraction f3;
+
+    f3=f1+f2;
+    cout<<"Addition: ";
+    f3.getFraction();
+
+    f3=f1-f2;
+    cout<<"Subtraction: ";
+    f3.getFraction();
+
+    f3=f1*f2;
+    cout<<"Multiplication: ";
+    f3.getFraction();
+
+    f3=f1/f2;
+    cout<<"Division: ";
+    f3.getFraction();
+
+    cout<<"Overloading input stream and output stream: "<<endl;
+    cin>>f3;
+    cout<<f3;
+
+    return 0;
+
 }

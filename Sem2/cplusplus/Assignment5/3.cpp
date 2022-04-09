@@ -1,123 +1,155 @@
+// Assignment 5
+// Question 3
+// 2021pgcaca050
+
 #include <iostream>
-#include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
-class MyDate
+class Fraction
 {
-
 private:
-    int day;
-    int month;
-    int year;
+    int num;
+    int denom;
 
 public:
-    MyDate()
+    Fraction()
     {
-        day = 0;
-        month = 0;
-        year = 0;
+        num = 0, denom = 1;
     }
 
-    MyDate(int day, int month, int year)
+    Fraction(int num, int denom)
     {
-        this->day = day;
-        this->month = month;
-        this->year = year;
+        this->num = num;
+        this->denom = denom;
     }
 
-    friend class Employee;
+    void getFraction()
+    {
+        cout << num << "/" << denom << endl;
+    }
+
+    void setFraction(int num, int denom)
+    {
+        this->num = num;
+        this->denom = denom;
+    }
+
+    // Overloading
+
+    void operator++(){
+
+        Fraction f3;
+
+        f3.num=this->num + this->denom;
+        f3.denom=this->denom;
+
+        int gcD = __gcd(f3.num, f3.denom);
+        f3.num = f3.num / gcD;
+        f3.denom = f3.denom / gcD;
+
+        this->num=f3.num;
+        this->denom=f3.denom;
+
+    }
+
+    void operator++(int){
+
+        Fraction f3;
+
+        f3.num=this->num + this->denom;
+        f3.denom=this->denom;
+
+        int gcD = __gcd(f3.num, f3.denom);
+        f3.num = f3.num / gcD;
+        f3.denom = f3.denom / gcD;
+
+        this->num=f3.num;
+        this->denom=f3.denom;
+
+    }
+
+    friend void operator--(Fraction &f,int);
+    friend void operator--(Fraction &f);
+
+    friend void operator << (ostream &out, Fraction &f);
+    friend void operator >> (istream &in, Fraction &f);
 };
 
-class Employee
-{
+void operator--(Fraction &f){
 
-private:
-    int empno;
-    MyDate doj;
-    double salary;
+    Fraction f3;
 
-public:
-    Employee() {}
+    f3.num=f.denom - f.num;
+    f3.denom=f.denom;
 
-    // 1. Parameretized constructor
-    Employee(int empno, MyDate doj, double salary)
-    {
-        this->empno = empno;
-        this->doj = doj;
-        this->salary = salary;
-    }
+    int gcD = __gcd(f3.num, f3.denom);
+    f3.num = f3.num / gcD;
+    f3.denom = f3.denom / gcD;
 
-    // 2. Copy constructor
-    Employee(const Employee &emp)
-    {
-        empno = emp.empno;
-        doj = emp.doj;
-        salary = emp.salary;
-    }
+    f.num=f3.num;
+    f.denom=f3.denom;
 
-    void setEmpdata(int employeeNo, MyDate myDate, double salary)
-    {
-        empno = employeeNo;
-        doj = myDate;
-        this->salary = salary;
-    }
-
-    void showEmpdata()
-    {
-        cout << "Employee Number: " << empno << endl;
-        cout << "Date of joining: " << doj.day << "/" << doj.month << "/" << doj.year << endl;
-        cout << "Salary: Rs." << salary << endl;
-    }
-
-    friend void TaxPayable(Employee emp);
-};
-
-void TaxPayable(Employee emp)
-{
-    if (emp.salary < 100000)
-        cout << "No Tax" << endl;
-    else if (emp.salary >= 100000 && emp.salary < 200000)
-    {
-        double tax = emp.salary * 0.1;
-        cout << "Tax: " << tax << endl;
-    }
-    else if (emp.salary >= 200000 && emp.salary < 500000)
-    {
-        double tax = emp.salary * .15;
-        cout << "Tax: " << tax << endl;
-    }
-    else
-    {
-        double tax = emp.salary * .2;
-        cout << "Tax: " << tax << endl;
-    }
 }
 
-int main()
-{
-    int empno;
-    int date, month, year;
-    double sal;
+void operator--(Fraction &f,int){
 
-    cout << "Enter employee number: ";
-    cin >> empno;
-    cout << "Enter date of joining" << endl;
-    cout << "Enter day: ";
-    cin >> date;
-    cout << "Enter month: ";
-    cin >> month;
-    cout << "Enter year: ";
-    cin >> year;
+    Fraction f3;
 
-    cout << "Enter Your salary: ";
-    cin >> sal;
+    f3.num=f.denom - f.num;
+    f3.denom=f.denom;
 
-    MyDate d1(date, month, year);
-    Employee e1(empno, d1, sal);
+    int gcD = __gcd(f3.num, f3.denom);
+    f3.num = f3.num / gcD;
+    f3.denom = f3.denom / gcD;
 
-    e1.showEmpdata();
-    TaxPayable(e1);
+    f.num=f3.num;
+    f.denom=f3.denom;
+
+}
+
+void operator << (ostream &out, Fraction &f){
+
+    out<<f.num<<"/"<<f.denom<<endl;
+
+}
+
+void operator >> (istream &in, Fraction &f){
+
+    cout<<"Enter numerator: ";
+    in>>f.num;
+
+    cout<<"Enter denominator: ";
+    in>>f.denom;
+
+}
+
+int main(){
+
+    Fraction f3;
+
+    cin>>f3;
+    cout<<"Pre Increment: ";
+    ++f3;
+    cout<<f3;
+
+    cin>>f3;
+    cout<<"Post Increment: ";
+    f3++;
+    cout<<f3;
+
+    cin>>f3;
+    cout<<"Pre Decrement: ";
+    --f3;
+    cout<<f3;
+
+    cin>>f3;
+    cout<<"Post Decrement: ";
+    f3--;
+    cout<<f3;
 
     return 0;
+
 }
+

@@ -1,131 +1,112 @@
+// Assignment 5
+// Question 2
+// 2021pgcaca050
+
 #include <iostream>
-#include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
-class Account
+class Fraction
 {
-
 private:
-    int accountno;
-    double balance;
-    static double totalbal;
+    int num;
+    int denom;
 
 public:
-    Account()
+    Fraction()
     {
-        accountno = 0;
-        balance = 0;
+        num = 0, denom = 1;
     }
 
-    // 1. Parameterized constructor
-    Account(int accountno, double balance)
+    Fraction(int num, int denom)
     {
-        this->accountno = accountno;
-        this->balance = balance;
+        this->num = num;
+        this->denom = denom;
     }
 
-    // 2. Destructor
-    ~Account()
+    void getFraction()
     {
-        totalbal -= balance;
+        cout << num << "/" << denom << endl;
     }
 
-    // 3. deposite
-    void deposite(double balance)
+    void setFraction(int num, int denom)
     {
-        this->balance += balance;
-        totalbal += balance;
+        this->num = num;
+        this->denom = denom;
     }
 
-    // 4. Withdraw
-    void withdraw(double balance)
-    {
-        this->balance -= balance;
-        totalbal -= balance;
+    // Overloading
+
+    Fraction operator+(int n){
+
+        Fraction f3;
+
+        f3.num=this->num+ (n * this->denom);
+        f3.denom=this->denom;
+
+        int gcD = __gcd(f3.num, f3.denom);
+        f3.num = f3.num / gcD;
+        f3.denom = f3.denom / gcD;
+
+        return f3;
     }
 
-    // 5. add to bank
-    static void addtobank(double amount)
-    {
-        totalbal += amount;
-    }
+    friend Fraction operator-(int n,Fraction &f);
 
-    // 6. deduct from bank
-    static void deductfrombank(double amount)
-    {
-        totalbal -= amount;
-    }
-
-    void viewBalance()
-    {
-        cout << "Account number: " << accountno << endl;
-        cout << "Balance: Rs." << fixed << setprecision(2) << balance << endl;
-    }
+    friend void operator << (ostream &out, Fraction &f);
+    friend void operator >> (istream &in, Fraction &f);
 };
 
-double Account::totalbal = 0;
 
-int main()
-{
+Fraction operator-(int n, Fraction &f){
 
-    int accountNumber, balance;
-    cout << "Enter account number: ";
-    cin >> accountNumber;
-    cout << "Enter balance: ";
-    cin >> balance;
+    Fraction f3;
 
-    Account *a = new Account(accountNumber, balance);
+    f3.num=f.num - (n * f.denom);
+    f3.denom=f.denom;
 
-    int n = 1;
-    while (n)
-    {
-        cout << "Menu" << endl;
-        cout << "1. Deposite money " << endl;
-        cout << "2. Withdraw money " << endl;
-        cout << "3. Add money to bank " << endl;
-        cout << "4. Deduct money from bank " << endl;
-        cout << "5. View Balance " << endl;
-        cout << "6. Exit" << endl;
-        cout << "Enter choice: ";
+    int gcD = __gcd(f3.num, f3.denom);
+    f3.num = f3.num / gcD;
+    f3.denom = f3.denom / gcD;
 
-        int ch;
-        double amount;
-        cin >> ch;
+    return f3;
 
-        switch (ch)
-        {
-        case 1:
-            cout << "Enter amount to deposite: ";
-            cin >> amount;
-            a->deposite(amount);
-            break;
-        case 2:
-            cout << "Enter amount to withdraw: ";
-            cin >> amount;
-            a->withdraw(amount);
-            break;
-        case 3:
-            cout << "Enter amount to add to bank: ";
-            cin >> amount;
-            a->addtobank(amount);
-            break;
-        case 4:
-            cout << "Enter the amount to deduct from bank: ";
-            cin >> amount;
-            a->deductfrombank(amount);
-            break;
-        case 5:
-            a->viewBalance();
-            break;
-        case 6:
-            n = 0;
-            break;
-        default:
-            cout << "Invalid input" << endl;
-            break;
-        }
-    }
+}
+
+void operator << (ostream &out, Fraction &f){
+
+    out<<f.num<<"/"<<f.denom<<endl;
+
+}
+
+void operator >> (istream &in, Fraction &f){
+
+    cout<<"Enter numerator: ";
+    in>>f.num;
+
+    cout<<"Enter denominator: ";
+    in>>f.denom;
+
+}
+
+int main(){
+
+    Fraction f1,f3;
+    cin>>f1;
+    cout<<"Enter integer to add: ";
+    int n;
+    cin>>n;
+
+    cout<<"Addition: ";
+    f3=f1+n;
+    cout<<f3;
+
+    cout<<"Subtraction: ";
+    f3=n-f1;
+    cout<<f3;
 
     return 0;
+
 }
+
