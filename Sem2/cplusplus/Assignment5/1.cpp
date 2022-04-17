@@ -38,7 +38,8 @@ public:
 
     // Overloading
 
-    Fraction operator+(Fraction f1){
+    Fraction operator+(Fraction f1)
+    {
 
         Fraction f3;
 
@@ -53,7 +54,8 @@ public:
         return f3;
     }
 
-    Fraction operator-(Fraction f1){
+    Fraction operator-(Fraction f1)
+    {
 
         Fraction f3;
 
@@ -68,7 +70,8 @@ public:
         return f3;
     }
 
-    Fraction operator*(Fraction f2){
+    Fraction operator*(Fraction f2)
+    {
 
         Fraction f3;
 
@@ -83,12 +86,12 @@ public:
     }
 
     friend Fraction operator/(Fraction f1, Fraction f2);
-    friend void operator << (ostream &out, Fraction &f);
-    friend void operator >> (istream &in, Fraction &f);
-
+    friend void operator<<(ostream &out, Fraction &f);
+    friend void operator>>(istream &in, Fraction &f);
 };
 
-Fraction operator/(Fraction f1, Fraction f2){
+Fraction operator/(Fraction f1, Fraction f2)
+{
 
     Fraction f3;
 
@@ -102,58 +105,58 @@ Fraction operator/(Fraction f1, Fraction f2){
     return f3;
 }
 
-void operator << (ostream &out, Fraction &f){
+void operator<<(ostream &out, Fraction &f)
+{
 
-    out<<f.num<<"/"<<f.denom<<endl;
-
+    out << f.num << "/" << f.denom << endl;
 }
 
-void operator >> (istream &in, Fraction &f){
+void operator>>(istream &in, Fraction &f)
+{
 
-    cout<<"Enter numerator: ";
-    in>>f.num;
+    cout << "Enter numerator: ";
+    in >> f.num;
 
-    cout<<"Enter denominator: ";
-    in>>f.denom;
-
+    cout << "Enter denominator: ";
+    in >> f.denom;
 }
 
-int main(){
+int main()
+{
 
-    int n1,d1,n2,d2;
-    cout<<"Enter numerator for 1st fraction: ";
-    cin>>n1;
-    cout<<"Enter denominator for 1st fraction: ";
-    cin>>d1;
+    int n1, d1, n2, d2;
+    cout << "Enter numerator for 1st fraction: ";
+    cin >> n1;
+    cout << "Enter denominator for 1st fraction: ";
+    cin >> d1;
 
-    cout<<"Enter numerator for 2nd fraction: ";
-    cin>>n2;
-    cout<<"Enter denominator for 2nd fraction: ";
-    cin>>d2;
+    cout << "Enter numerator for 2nd fraction: ";
+    cin >> n2;
+    cout << "Enter denominator for 2nd fraction: ";
+    cin >> d2;
 
-    Fraction f1(n1,d1),f2(n2,d2);
+    Fraction f1(n1, d1), f2(n2, d2);
     Fraction f3;
 
-    f3=f1+f2;
-    cout<<"Addition: ";
+    f3 = f1 + f2;
+    cout << "Addition: ";
     f3.getFraction();
 
-    f3=f1-f2;
-    cout<<"Subtraction: ";
+    f3 = f1 - f2;
+    cout << "Subtraction: ";
     f3.getFraction();
 
-    f3=f1*f2;
-    cout<<"Multiplication: ";
+    f3 = f1 * f2;
+    cout << "Multiplication: ";
     f3.getFraction();
 
-    f3=f1/f2;
-    cout<<"Division: ";
+    f3 = f1 / f2;
+    cout << "Division: ";
     f3.getFraction();
 
-    cout<<"Overloading input stream and output stream: "<<endl;
-    cin>>f3;
-    cout<<f3;
+    cout << "Overloading input stream and output stream: " << endl;
+    cin >> f3;
+    cout << f3;
 
     return 0;
-
 }
