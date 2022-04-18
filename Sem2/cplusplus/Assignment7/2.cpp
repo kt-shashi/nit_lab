@@ -68,7 +68,7 @@ class Employee : public FamilyMember, public Citizen
 {
 
 protected:
-    int nameEmployee;
+    string nameEmployee;
 
 public:
     Employee() {}
@@ -85,7 +85,7 @@ public:
     void about()
     {
         cout << "Name: " << name << endl
-             << "Familyname: " << familyname << endl
+             << "Family name: " << familyname << endl
              << "Origin: " << origin << endl
              << "Country: " << country << endl
              << "Year: " << year << endl;
@@ -94,5 +94,44 @@ public:
 
 int main()
 {
+    string name, fn, o, c, y;
+
+    cout<<"Enter name: "<<endl;
+    cin>>name;
+    cout<<"Enter family name: "<<endl;
+    cin>>fn;
+    cout<<"Enter origin: "<<endl;
+    cin>>o;
+    cout<<"Enter country: "<<endl;
+    cin>>c;
+    cout<<"Enter year: "<<endl;
+    cin>>y;
+
+    cout<<endl<<endl<<"Output"<<endl<<endl;
+
+    Employee e1(name,fn,o,c,y);
+
+    FamilyMember *fmobj1, fmobj2(name,fn,o);
+
+    cout<<endl<<"Object of FamilyMember(Base) Class: "<<endl<<endl;
+    fmobj1=&fmobj2;
+    fmobj1->about();
+
+    cout<<endl<<"Object of Employee(Derived): "<<endl<<endl;
+    fmobj1=&e1;
+    fmobj1->about();
+
+    Citizen *cobj1, cobj2(name,c,y);
+
+    cout<<endl<<"Object of Citizen(Base) class: "<<endl<<endl;
+    cobj1=&cobj2;
+    cobj1->about();
+
+    cout<<endl<<"Object of Employee(Derived): "<<endl<<endl;
+    cobj1=&e1;
+    cobj1->about();
+
+    cout<<endl;
+
     return 0;
 }
