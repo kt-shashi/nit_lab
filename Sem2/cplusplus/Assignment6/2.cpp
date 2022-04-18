@@ -35,7 +35,8 @@ public:
 
 void Student::printdata()
 {
-    cout << "Print data of Student class" << endl;
+    cout << endl
+         << "Print data of Student class" << endl;
 
     cout << "Rollno: " << Rollno << endl;
     cout << "name: " << studentName << endl;
@@ -99,7 +100,8 @@ public:
 void WorkingStudent::printdata()
 {
 
-    cout << "Print data of WorkingStudent class" << endl;
+    cout << endl
+         << "Print data of WorkingStudent class" << endl;
 
     cout << "Rollno: " << Rollno << endl;
     cout << "name: " << name << endl;
