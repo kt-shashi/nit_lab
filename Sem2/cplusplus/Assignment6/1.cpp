@@ -17,6 +17,7 @@ protected:
 public:
     Point()
     {
+         cout<<"\nObject of Point class is created"<<endl;
         xCo = yCo = 0;
     }
     Point(int xCo, int yCo)
@@ -26,7 +27,7 @@ public:
     }
     ~Point()
     {
-        cout << "Destructor called for Point" << endl;
+         cout<<"Object of point class is destroyed"<<endl;
     }
 };
 
@@ -42,6 +43,7 @@ public:
     }
     Circle(float r, int xCo, int yCo) : Point(xCo, yCo)
     {
+     cout<<"\nObject of circle class is created"<<endl;
         radius = r;
     }
     void print()
@@ -56,7 +58,7 @@ public:
     }
     ~Circle()
     {
-        cout << "Destructor called for Circle" << endl;
+          cout<<"\nObject of circle class is destroyed\n"<<endl;
     }
 };
 
@@ -72,6 +74,7 @@ public:
     }
     Cylinder(float h, int r, int xCo, int yCo) : Circle(r, xCo, yCo)
     {
+    cout<<"\nObject of Cylinder class is created\n";
         height = h;
     }
     void print()
@@ -89,6 +92,10 @@ public:
     float volume()
     {
         return PI * radius * radius * height;
+    }
+     ~Cylinder()
+    {
+        cout<<"\nCylinder class object is destroyed"<<endl;
     }
 };
 
