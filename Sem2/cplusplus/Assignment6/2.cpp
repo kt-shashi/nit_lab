@@ -144,7 +144,11 @@ int main()
     WorkingStudent ws1(r, n1, b, i, c, e, n1, o, s);
     ws1.printdata();
 
-    // Object slicing
-    Student s1 = ws1;
-    s1.printdata();
+    // Object slicing student
+    Student *s1 = &ws1;
+    s1->printdata();
+
+    // Object slicing employee
+    Employee *e1 = &ws1;
+    e1->printdata();
 }
