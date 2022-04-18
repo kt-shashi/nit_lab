@@ -7,8 +7,30 @@
 
 using namespace std;
 
-class MixedFraction;
+class MixedFraction
+{
+private:
+    int x;
+    int num;
+    int denom;
 
+public:
+    MixedFraction() {}
+
+    MixedFraction(int x1, int num1, int denom1)
+    {
+        x = x1;
+        num = num1;
+        denom = denom1;
+    }
+
+    friend void operator<<(ostream &out, MixedFraction &f);
+};
+
+void operator<<(ostream &out, MixedFraction &f)
+{
+    out << f.x << " " << f.num << "/" << f.denom << endl;
+}
 class Fraction
 {
 private:
@@ -27,16 +49,6 @@ public:
         this->denom = denom;
     }
 
-    int getNumerator()
-    {
-        return num;
-    }
-
-    int getDenominator()
-    {
-        return denom;
-    }
-
     friend void operator<<(ostream &out, Fraction &f);
     friend void operator>>(istream &in, Fraction &f);
 
@@ -44,6 +56,15 @@ public:
     operator float()
     {
         return (float)num / denom;
+    }
+
+    // Operator function for type conversion 2
+    operator MixedFraction()
+    {
+        int a = this->num / this->denom;
+        int b = this->num % this->denom;
+        int c = this->denom;
+        return MixedFraction(a, b, c);
     }
 };
 
@@ -61,50 +82,6 @@ void operator>>(istream &in, Fraction &f)
 
     cout << "Enter denominator: ";
     in >> f.denom;
-}
-
-class MixedFraction
-{
-private:
-    int num;
-    int denom;
-
-public:
-    MixedFraction() {}
-
-    // Constructor for type conversion 2
-    MixedFraction(Fraction f)
-    {
-        num = f.getNumerator();
-        denom = f.getDenominator();
-    }
-
-    int getNumerator()
-    {
-        return num;
-    }
-
-    int getDenominator()
-    {
-        return denom;
-    }
-
-    void setFraction(int num, int denom)
-    {
-        this->num = num;
-        this->denom = denom;
-    }
-
-    friend void operator<<(ostream &out, MixedFraction &f);
-};
-
-void operator<<(ostream &out, MixedFraction &f)
-{
-
-    if (f.getNumerator() < f.getDenominator())
-        out << f.num << "/" << f.denom << endl;
-    else
-        out << f.num / f.denom << "-" << f.num / f.denom << "/" << f.denom << endl;
 }
 
 int main()
