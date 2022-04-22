@@ -56,6 +56,7 @@ public:
 
     friend void operator << (ostream &out, Fraction &f);
     friend void operator >> (istream &in, Fraction &f);
+    friend void operator > (istream &in, Fraction &f);
 };
 
 
